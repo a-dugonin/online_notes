@@ -1,0 +1,79 @@
+{% extends 'mainapp/base.html' %}
+
+{% block title %}
+Онлайн заметки. Добавление заметки
+{% endblock %}
+
+{% block body %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        color: #000;
+        background-color: #f8f8f8;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .form {
+        max-width: 320px;
+        padding: 15px;
+        margin: 20px auto;
+        background-color: #fff;
+    }
+
+    .input {
+        display: block;
+        width: 100%;
+        padding: 8px 10px;
+        margin-bottom: 10px;
+
+        border: 1px solid #ccc;
+
+        font-family: inherit;
+        font-size: 16px;
+    }
+
+    .btn {
+        display: block;
+        width: 100%;
+        padding: 8px 10px;
+
+        border: 0;
+        background-color: #1cbc11;
+        cursor: pointer;
+
+        font-family: inherit;
+        font-size: 16px;
+        color: #fff;
+    }
+
+    .btn:hover {
+        background-color: #14a20a;
+    }
+</style>
+
+<h1 class="container text-center" style="margin-top: 100px">Добавление заметки</h1>
+
+<a href="{% url 'logout' %}" style="position: absolute; right: 100px; top: 50px; text-decoration: none">
+    <button class="btn">Выход</button>
+</a>
+
+<a href="{% url 'notes' %}" style="position: absolute; left: 100px; top: 50px; text-decoration: none">
+    <button class="btn">К списку заметок</button>
+</a>
+
+<form class="form" action="" method="post">
+    {% csrf_token %}
+<!--    <label class="container text-center">Поле для ввода заметки</label>-->
+    <textarea class="input" rows="5" cols="30" name="note-text" placeholder="Поле для ввода заметки"></textarea>
+    <!--    <input class="input" type="text" name="email" placeholder="Email">-->
+    <!--    <input class="input" type="text" name="first_name" placeholder="Имя пользователя">-->
+    <!--    <input class="input" type="text" name="last_name" placeholder="Фамилия пользователя">-->
+<!--    <input class="input" type="text" name="password" placeholder="Пароль">-->
+    <!--    <input class="input" type="text" name="password2" placeholder="Подтверждение пароля">-->
+    <button class="btn" type="submit">Сохранить заметку</button>
+</form>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'mainapp/base.html' %}
+
+{% block title %}
+Онлайн заметки. Регистрация
+{% endblock %}
+
+{% block body %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        color: #000;
+        background-color: #f8f8f8;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .form {
+        max-width: 320px;
+        padding: 15px;
+        margin: 20px auto;
+        background-color: #fff;
+    }
+
+    .input {
+        display: block;
+        width: 100%;
+        padding: 8px 10px;
+        margin-bottom: 10px;
+
+        border: 1px solid #ccc;
+
+        font-family: inherit;
+        font-size: 16px;
+    }
+
+    .btn {
+        display: block;
+        width: 100%;
+        padding: 8px 10px;
+
+        border: 0;
+        background-color: #1cbc11;
+        cursor: pointer;
+
+        font-family: inherit;
+        font-size: 16px;
+        color: #fff;
+    }
+
+    .btn:hover {
+        background-color: #14a20a;
+    }
+</style>
+
+<h1 class="container text-center" style="margin-top: 100px">Регистрация пользователя</h1>
+
+<a href="{% url 'start_page' %}" style="position: absolute; right: 100px; top: 50px; text-decoration: none">
+    <button class="btn">На главную</button>
+</a>
+
+<a href="{% url 'login' %}" style="position: absolute; left: 100px; top: 50px; text-decoration: none">
+    <button class="btn">Войти</button>
+</a>
+
+<form class="form" action="" method="post">
+    {% csrf_token %}
+    {% for el in form %}
+    <input class="input" type="text" name="{{ el.name }}" placeholder="{{ el.label }}">
+<!--    <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>-->
+    <div class="form-error">{{ f.errors }}</div>
+    {% endfor %}
+    <!--    <input class="input" type="text" name="username" placeholder="Логин">-->
+    <!--    <input class="input" type="text" name="email" placeholder="Email">-->
+    <!--    <input class="input" type="text" name="first_name" placeholder="Имя пользователя">-->
+    <!--    <input class="input" type="text" name="last_name" placeholder="Фамилия пользователя">-->
+    <!--    <input class="input" type="text" name="password1" placeholder="Пароль">-->
+    <!--    <input class="input" type="text" name="password2" placeholder="Подтверждение пароля">-->
+    <button class="btn" type="submit">Регистрация</button>
+</form>
+{% endblock %}
